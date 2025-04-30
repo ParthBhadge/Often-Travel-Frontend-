@@ -86,7 +86,7 @@ const HomePage = () => {
             placeholder="e.g., 3"
           />
         </div>
-        <button className="search-button" onClick={fetchRecommendations}>
+        <button className="search-button" onClick={fetchItineraries2}>
           Get Recommendations
         </button>
       </div>
