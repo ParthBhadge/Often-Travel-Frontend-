@@ -11,3 +11,31 @@
 .create-data-container button {
   align-self: flex-start;
 }
+.create-itinerary-container {
+  margin-top: 20px;
+}
+
+.create-itinerary-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.create-itinerary-container label {
+  font-weight: bold;
+}
+
+.create-itinerary-container input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.create-itinerary-container button {
+  align-self: flex-start;
+  background-color: #28a745;
+}
+
+.create-itinerary-container button:hover {
+  background-color: #218838;
+}

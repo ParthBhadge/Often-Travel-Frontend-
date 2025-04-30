@@ -3,6 +3,7 @@ import axios from "../api"; // Axios instance with the backend base URL
 import "../style/HomePage.css";
 import { Link } from "react-router-dom"; // Import Link
 import API from "../api"; // Import the Axios instance
+import "../style/global.css";
 
 const HomePage = () => {
   const [nights, setNights] = useState(""); // Input for number of nights
@@ -60,8 +61,8 @@ const HomePage = () => {
   return (
     <div className="homepage">
       <header className="homepage-header">
-        <h1>Welcome to Often Travel</h1>
-        <p>Find the best itineraries tailored to your travel duration and region.</p>
+        <h1 id="miHead">Welcome to Often Travel</h1>
+        <p id="miHead">Find the best itineraries tailored to your travel duration and region.</p>
         <Link to="/itineraries">Manage Itineraries</Link> {/* Add this */}
       </header>
 

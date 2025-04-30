@@ -1,25 +1,22 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import API from "../api"; // Axios instance with the backend base URL
-import "../style/HomePage.css";
 import "../style/AddDaysPage.css";
 
 const AddDaysPage = () => {
-  const { itineraryId } = useParams(); // Get the itinerary ID from the URL
+  const { itineraryId } = useParams(); // Get itinerary ID from the URL
   const navigate = useNavigate();
   const [days, setDays] = useState([
     { day_number: 1, hotel: "", activities: "", transfers: "" },
-  ]); // Initial state for days
+  ]);
   const [error, setError] = useState(""); // Error message
 
-  // Handle input changes for a specific day
   const handleDayChange = (index, field, value) => {
     const updatedDays = [...days];
     updatedDays[index][field] = value;
     setDays(updatedDays);
   };
 
-  // Add a new day to the form
   const addDay = () => {
     setDays([
       ...days,
@@ -27,19 +24,17 @@ const AddDaysPage = () => {
     ]);
   };
 
-  // Remove a day from the form
   const removeDay = (index) => {
     const updatedDays = days.filter((_, i) => i !== index);
     setDays(updatedDays);
   };
 
-  // Submit the days data to the backend
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await API.post(`/itineraries/${itineraryId}/days`, days);
       alert("Days added successfully!");
-      navigate(`/itineraries`); // Redirect to the itineraries page
+      navigate(`/itineraries`);
     } catch (err) {
       console.error("Error adding days:", err);
       setError("Failed to add days. Please try again.");
@@ -63,9 +58,7 @@ const AddDaysPage = () => {
               <input
                 type="text"
                 value={day.hotel}
-                onChange={(e) =>
-                  handleDayChange(index, "hotel", e.target.value)
-                }
+                onChange={(e) => handleDayChange(index, "hotel", e.target.value)}
                 required
               />
             </label>

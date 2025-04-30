@@ -3,6 +3,7 @@ import API from "../api"; // Axios instance with the backend base URL
 import "../style/HomePage.css"; // Reuse existing styles
 import "../style/ItineraryPage.css";
 import { Link } from "react-router-dom"; // Import Link
+import "../style/global.css";
 
 const ItineraryPage = () => {
   const [itineraries, setItineraries] = useState([]); // List of itineraries
@@ -10,7 +11,6 @@ const ItineraryPage = () => {
     name: "",
     region: "",
     nights: 0,
-    days: [],
   }); // Form data for creating a new itinerary
   const [error, setError] = useState(""); // Error message
 
@@ -41,7 +41,7 @@ const ItineraryPage = () => {
     try {
       await API.post("/itineraries", formData);
       alert("Itinerary created successfully!");
-      setFormData({ name: "", region: "", nights: 0, days: [] });
+      setFormData({ name: "", region: "", nights: 0 });
       fetchItineraries(); // Refresh the list of itineraries
     } catch (err) {
       console.error("Error creating itinerary:", err);
@@ -51,9 +51,10 @@ const ItineraryPage = () => {
 
   return (
     <div className="homepage">
+      <Link to="/" className="link">Home</Link>
       <header className="homepage-header">
-        <h1>Manage Itineraries</h1>
-        <p>View and manage your itineraries.</p>
+        <h1 id="miHead">Manage Itineraries</h1>
+        <p id="miHead">View and manage your itineraries.</p>
       </header>
 
       <div className="itinerary-container">
@@ -65,7 +66,9 @@ const ItineraryPage = () => {
               <h3>{itinerary.name}</h3>
               <p><strong>Region:</strong> {itinerary.region}</p>
               <p><strong>Nights:</strong> {itinerary.nights}</p>
-              <Link to={`/itineraries/${itinerary.id}/add-days`}>Add Days</Link> {/* Add this */}
+              <Link to={`/itineraries/${itinerary.id}/add-days`} className="add-days-link">
+                Add Days
+              </Link>
             </li>
           ))}
         </ul>
@@ -84,7 +87,6 @@ const ItineraryPage = () => {
               required
             />
           </label>
-          <br />
           <label>
             Region:
             <input
@@ -95,7 +97,6 @@ const ItineraryPage = () => {
               required
             />
           </label>
-          <br />
           <label>
             Nights:
             <input
@@ -106,7 +107,6 @@ const ItineraryPage = () => {
               required
             />
           </label>
-          <br />
           <button type="submit">Create Itinerary</button>
         </form>
       </div>
