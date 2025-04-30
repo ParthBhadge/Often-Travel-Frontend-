@@ -1,0 +1,36 @@
+.add-days-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.add-days-container label {
+  font-weight: bold;
+}
+
+.add-days-container button {
+  align-self: flex-start;
+}
+
+.day-input {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #f8f9fa;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.day-input h3 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+  color: #007bff;
+}
+
+.day-input button {
+  margin-top: 10px;
+  background-color: #dc3545;
+}
+
+.day-input button:hover {
+  background-color: #c82333;
+}

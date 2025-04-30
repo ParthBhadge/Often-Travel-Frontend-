@@ -1,0 +1,13 @@
+.create-data-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.create-data-container label {
+  font-weight: bold;
+}
+
+.create-data-container button {
+  align-self: flex-start;
+}
